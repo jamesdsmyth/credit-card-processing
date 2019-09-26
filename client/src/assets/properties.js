@@ -4,23 +4,32 @@ export const properties = {
     {
       label: 'Name',
       type: 'text',
+      name: 'name',
       min: 0,
       max: 100,
-      id: 'form-name'
+      id: 'form-name',
+      error: 'Please enter a valid name using letters',
+      isValid: true
     },
     {
       label: 'Card number',
       type: 'text',
+      name: 'cardNumber',
       min: 16,
       max: 19,
-      id: 'form-card-number'
+      id: 'form-card-number',
+      error: 'Please enter a valid card number using numbers',
+      isValid: true
     },
     {
       label: 'Limit',
       type: 'text',
+      name: 'limit',
       min: 0,
       max: 100,
-      id: 'form-card-limit'
+      id: 'form-card-limit',
+      error: 'Please enter a valid card limit using numbers',
+      isValid: true
     }
   ]
 }

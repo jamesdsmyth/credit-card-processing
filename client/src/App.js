@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+
+import HeaderSection from './components/organisms/headerSection/HeaderSection';
+import AddCardSection from './components/organisms/addCardSection/AddCardSection';
+
 import './App.css';
+
 
 const b = async () => {
 
@@ -15,14 +20,13 @@ const b = async () => {
   }
 }
 
-b();
+// b();
 
 function App() {
   return (
     <div className="App">
-      <header>
-        Credit Card System
-      </header>
+      <HeaderSection />
+      <AddCardSection />
     </div>
   );
 }
