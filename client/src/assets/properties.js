@@ -31,5 +31,23 @@ export const properties = {
       error: 'Please enter a valid card limit using numbers',
       isValid: true
     }
+  ],
+  existingCardsTableHeadings: [
+    {
+      heading: 'Name',
+      ref: 'name',
+    },
+    {
+      heading: 'Card Number',
+      ref: 'cardNumber',
+    },
+    {
+      heading: 'Balance',
+      ref: 'balance',
+    },
+    {
+      heading: 'Limit',
+      ref: 'limit',
+    }
   ]
 }

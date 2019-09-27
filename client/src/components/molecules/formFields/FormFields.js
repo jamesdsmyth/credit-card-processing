@@ -4,7 +4,6 @@ import Input from '../../atoms/input/Input';
 import Label from '../../atoms/label/Label';
 
 const FormFields = ({ fields, onBlur }) => {
-  console.log('here', fields);
   return (
     fields.map((item, index) => {
       return (

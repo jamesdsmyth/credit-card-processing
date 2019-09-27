@@ -5,16 +5,23 @@ export const formValidation = (value, name) => {
 
   switch(name) {
     case 'name':
-      reg = new RegExp(/^[a-zA-Z]+$/);
-      return reg.test(value);
+      value = removeAllWhiteSpace(value);
+        
+      if(value.length === 0) {
+        return false;
+      } else {
+        reg = new RegExp(/^[a-zA-Z ]+$/);
+        return reg.test(value);
+      }
 
     case 'cardNumber':
-
-    if(value.length === 0) {
-      return false;
-    } else {
-      return luhn.validate(value);
-    }
+        value = removeAllWhiteSpace(value);
+        
+        if(value.length === 0) {
+          return false;
+        } else {
+          return luhn.validate(value);
+        }
     
     case 'limit':
       reg = new RegExp(/^\d*[1-9]\d*$/);
@@ -24,3 +31,5 @@ export const formValidation = (value, name) => {
       return;
   }
 }
+
+const removeAllWhiteSpace = (value) => value.replace(/\s/g,'');
