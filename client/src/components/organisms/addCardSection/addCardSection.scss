@@ -1,0 +1,9 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include tablet-portrait {
+    width: 500px;
+  }
+}

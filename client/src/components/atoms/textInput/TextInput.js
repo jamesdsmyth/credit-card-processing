@@ -9,10 +9,17 @@ const TextInput = ({ type, onBlur, min, max, id, name }) => {
     onBlur(e.target.value, name);
   }
 
+  const onInputChange = (e) => {
+    const reg = new RegExp(/^\d*[1-9]\d*$/);
+    console.log(reg.test(e.target.value));
+  }
+
   return (
     <input
       type={type}
+      className={`form-input`}
       onBlur={(e) => onInputBlur(e)}
+      onChange={onInputChange}
       minLength={min}
       maxLength={max}
       id={id}
@@ -20,7 +27,6 @@ const TextInput = ({ type, onBlur, min, max, id, name }) => {
     />
   )
 }
-
 
 TextInput.propTypes = {
   type: PropTypes.string.isRequired,

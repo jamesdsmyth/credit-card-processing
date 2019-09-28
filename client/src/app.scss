@@ -7,6 +7,13 @@
 
 // atoms
 @import './components/atoms/heading/heading.scss';
+@import './components/atoms/subHeading/subHeading.scss';
+@import './components/atoms/label/label.scss';
+@import './components/atoms/textInput/textInput.scss';
+
+// molecules
+@import './components/molecules/formFields/formFields.scss';
 
 // organisms
 @import './components/organisms/headerSection/headerSection.scss';
+@import './components/organisms/addCardSection/addCardSection.scss';
