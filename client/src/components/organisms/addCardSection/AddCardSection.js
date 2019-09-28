@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import FormFields from '../../molecules/formFields/FormFields';
 import Button from '../../atoms/button/Button';
@@ -16,16 +16,23 @@ const AddCardSection = () => {
   
   // redux
   const dispatch = useDispatch();
+  const notification = useSelector(state => state.notificationReducer);
     
   // the local state
-  const [formFields, setFormFields] = useState([]);
+  const [formFields, setFormFields] = useState(properties.addCardFormFields);
   const [formData, setFormData] = useState({ name: '', cardNumber: '', limit: '' });
   const [addClickCount, setAddClickCount] = useState(0);
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
-  // mapping the properties file object of the fields to the state
+  // when we recieve a notification (success / failure) for writing to the database,
+  // we will then enable the submit button to submit another card
   useEffect(() => {
-    setFormFields(properties.addCardFormFields);
-  }, []);
+    handleNotificationFeedback();
+  }, [notification]);
+
+  const handleNotificationFeedback = () => {
+    setSubmitDisabled(false)
+  }
 
   // on clicking 'add' we will submit the form after validating it
   const addCreditCardSubmit = () => {
@@ -49,30 +56,34 @@ const AddCardSection = () => {
     // then we can dispatch the action after encrypting the card number
     if(isFormValid) {
       const data = prepareData();
+      setSubmitDisabled(true);
       dispatch(postCreditCard(data));
     } 
   }
 
+  // we need to encrypt the card number and set up the object
   const prepareData = () => {
     const encryptedCard = encryptCard(formData.cardNumber);
-    const data = Object.assign(
-      {}, 
-      formData, 
-      { 
+    return Object.assign({},  formData, { 
         'cardNumber': encryptedCard 
       },
       {
         'balance': 100
       }
-    );
-    
-    return data;
+    )
   }
 
   // onBlur we validate the form field, if it is empty,
   // we remove the error. We also call setValue() to
   // update the state
   const onInputBlur = (value, name) => {
+    
+    // if there is no change in the input and the user just blurs, then
+    // no need to do any validation
+    if(formData[name] === value) {
+      return;
+    }
+
     let isValid = formValidation(value, name);
     
     if(value.length === 0) {
@@ -111,6 +122,7 @@ const AddCardSection = () => {
         <Button 
           type={`button`}
           text={`Add`}
+          isDisabled={submitDisabled}
           onClick={addCreditCardSubmit}
         />
       </form>

@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 
-// container for the form, validation and error messages
 const NotificationSection = () => {
   
   // redux
   const notification = useSelector(state => state.notificationReducer);
 
+  if(notification.message) {
 
-  console.log(notification);
-
-  return (
-    <section>
-      breshhhh
-    </section>
-  )
+    setTimeout(() => {
+      console.log('NOW NEED TO CLEAR THE NOTIFICATION');
+    }, 3000);
+    
+    return (
+      <section className={`notification ${notification.type}`}>
+        {notification.message}
+      </section>
+    )
+  } else {
+    return (
+      <section />
+    )
+  }
 }
 
 export default NotificationSection;

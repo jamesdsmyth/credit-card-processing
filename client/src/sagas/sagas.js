@@ -1,14 +1,18 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { postCreditCardSuccess, postCreditCardFailure, getCreditCardsSuccess, getCreditCardsFailure } from '../actions/actions';
+import { 
+  postCreditCardSuccess, 
+  postCreditCardFailure, 
+  getCreditCardsSuccess, 
+  getCreditCardsFailure 
+} from '../actions/actions';
 
 export function* postCreditCard(obj) {
   try {
     const response = yield call(postCreditCardAPI, obj.data);
-    
     if(response.status === 200) {
-      yield put(postCreditCardSuccess());
+      yield put(postCreditCardSuccess(response.data));
       yield getCreditCards();
     }
   } catch(error) {

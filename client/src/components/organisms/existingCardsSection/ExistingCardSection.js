@@ -19,8 +19,6 @@ const ExistingCardSection = () => {
   }, [dispatch]);
   
   // we need to decrypt the card numbers on rerender as they are saved as encrypted
-
-  debugger;
   const decryptedCards = cards.map(item => {
     return Object.assign({}, item, { 'cardNumber': decryptCard(item.cardNumber) })
   });
