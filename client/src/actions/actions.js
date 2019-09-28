@@ -24,7 +24,7 @@ export const postCreditCard = (data) => {
   }
 }
 
-export const postCreditCardSuccess = () => {
+export const postCreditCardSuccess = (data) => {
   return {
     type: 'POST_CREDIT_CARD_SUCCESS'
   }

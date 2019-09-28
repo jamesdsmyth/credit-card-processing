@@ -15,9 +15,8 @@ import { encryptCard } from '../../../helpers/encryptCard';
 const AddCardSection = () => {
   
   // redux
-  // const count = useSelector(state => state.creditCardsReducer);
   const dispatch = useDispatch();
-  
+    
   // the local state
   const [formFields, setFormFields] = useState([]);
   const [formData, setFormData] = useState({ name: '', cardNumber: '', limit: '' });

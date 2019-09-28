@@ -1,28 +1,39 @@
-import { takeLatest, put } from 'redux-saga/effects';
+import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { getCreditCardsSuccess, getCreditCardsFailure } from '../actions/actions';
+import { postCreditCardSuccess, postCreditCardFailure, getCreditCardsSuccess, getCreditCardsFailure } from '../actions/actions';
 
 export function* postCreditCard(obj) {
   try {
-    const result = yield axios.post('api/credit-cards', obj.data)
-    const response = yield result;
-    yield put(getCreditCardsSuccess(response));
-
+    const response = yield call(postCreditCardAPI, obj.data);
+    
+    if(response.status === 200) {
+      yield put(postCreditCardSuccess());
+      yield getCreditCards();
+    }
   } catch(error) {
-    yield put(getCreditCardsFailure());
+    yield put(postCreditCardFailure());
   }
 }
 
 export function* getCreditCards() {
   try {
-    const result = yield axios.get('api/credit-cards');
-    const response = yield result.data;
-    yield put(getCreditCardsSuccess(response));
+    const response = yield call(getCreditCardsAPI);
 
+    if(response.status === 200) {
+      yield put(getCreditCardsSuccess(response.data));
+    }
   } catch(error) {
     yield put(getCreditCardsFailure());
   }
+}
+
+export const postCreditCardAPI = (data) => {
+  return axios.post('api/credit-cards', data);
+}
+
+export const getCreditCardsAPI = () => {
+  return axios.get('api/credit-cards');
 }
 
 export function* watchPostCreditCard(obj) {

@@ -9,7 +9,7 @@ const TableRow = ({ row, headings }) => (
     {
       Object.keys(headings).map((item, index) => {
         return (
-          <td key={index}> 
+          <td key={index}>
             {row[headings[item].ref]}
           </td>
         )

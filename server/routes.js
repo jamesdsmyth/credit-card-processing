@@ -14,8 +14,8 @@ mongoose.connect(DB_URL, { useNewUrlParser: true }, ).then(
 const cardSchema = mongoose.Schema({
   _id: mongoose.Types.ObjectId,
   name: String,
-  cardNumber: String,
-  balance: mongoose.Types.Decimal128,
+  cardNumber: Object,
+  balance: Number,
   limit: Number
 });
 
@@ -35,11 +35,11 @@ router.post('/', (req, res) => {
   const id = new mongoose.Types.ObjectId()
   const cardToPersist = Object.assign({ _id: id }, req.body)
   const card = new cardModel(cardToPersist);
-  card.save().then((err, card) => {
+  card.save().then((success, err) => {
     if(err) {
       res.status(500).send(err);
     } else {
-      res.json(card);
+      res.status(200).json(success);
     }
   });
 });
