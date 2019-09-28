@@ -1,0 +1,7 @@
+.heading {
+  font-size: 24px;
+
+  @include tablet-landscape {
+    font-size: 28px;
+  }
+}

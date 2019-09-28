@@ -4,7 +4,7 @@ import Heading from '../../atoms/heading/Heading';
 import { properties } from '../../../assets/properties';
 
 const HeaderSection = () => (
-  <header>
+  <header className={`header`}>
     <Heading text={properties.landingPageHeading} />
   </header> 
 )

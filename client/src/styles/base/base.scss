@@ -1,0 +1,18 @@
+html {
+  font-family: Helvetica, sans-serif;
+  color: $black;
+  font-size: 16px;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 10px;
+  
+  @include tablet-landscape {
+    max-width: 1000px;
+    padding: 30px 15px;
+  }
+}

@@ -5,7 +5,7 @@ import store from './reducers/combinedReducers';
 
 import LandingPage from './components/templates/landingPage/LandingPage';
 
-import './App.css';
+import './app.scss';
 
 const App = () => (
   <Provider store={store}>
