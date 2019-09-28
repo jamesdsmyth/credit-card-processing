@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Label = ({ text, labelFor }) => (
   <label
     htmlFor={labelFor}
-    className="label">
+    className="form-label">
     {text}
   </label>
 )

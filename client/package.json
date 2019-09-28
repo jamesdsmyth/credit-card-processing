@@ -1,5 +1,5 @@
 {
-  "name": "xxxxxx",
+  "name": "credit-card-processing-client",
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
   "dependencies": {
@@ -34,6 +34,9 @@
     ]
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6"
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.3"
   }
 }

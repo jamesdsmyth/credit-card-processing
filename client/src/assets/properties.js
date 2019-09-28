@@ -26,7 +26,7 @@ export const properties = {
       type: 'text',
       name: 'limit',
       min: 0,
-      max: 100,
+      max: 10,
       id: 'form-card-limit',
       error: 'Please enter a valid card limit using numbers',
       isValid: true

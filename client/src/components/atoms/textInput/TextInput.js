@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ type, onBlur, min, max, id, name }) => {
+const TextInput = ({ type, onBlur, min, max, id, name }) => {
 
   // we pass back the input value and the 
   // name to <AddCardSection /> so we can update the state
@@ -12,19 +12,17 @@ const Input = ({ type, onBlur, min, max, id, name }) => {
   return (
     <input
       type={type}
-      className="form-input"
       onBlur={(e) => onInputBlur(e)}
       minLength={min}
       maxLength={max}
       id={id}
       name={name}
-      autoComplete="off"
     />
   )
 }
 
 
-Input.propTypes = {
+TextInput.propTypes = {
   type: PropTypes.string.isRequired,
   onBlur: PropTypes.func.isRequired,
   minLength: PropTypes.number,
@@ -33,4 +31,4 @@ Input.propTypes = {
   name: PropTypes.string.isRequired
 }
 
-export default Input;
+export default TextInput;

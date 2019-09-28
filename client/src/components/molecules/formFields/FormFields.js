@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from '../../atoms/input/Input';
+import TextInput from '../../atoms/textInput/TextInput';
 import Label from '../../atoms/label/Label';
 
 const FormFields = ({ fields, onBlur }) => {
@@ -15,14 +15,13 @@ const FormFields = ({ fields, onBlur }) => {
             text={item.label}
             labelFor={item.id}
           />
-          <Input
+          <TextInput
             type={item.type}
             onBlur={onBlur}
             min={item.min}
             max={item.max}
             id={item.id}
             name={item.name}
-            isValid={item.isValid}
           />
           { !item.isValid &&
             <span>

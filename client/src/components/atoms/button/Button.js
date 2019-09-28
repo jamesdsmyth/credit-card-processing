@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ type, text, onClick, isDisabled }) => (
+const Button = ({ type, text, onClick, isDisabled, id }) => (
   <button
     type={type}
     onClick={onClick}
     disabled={isDisabled}
+    className="form-button"
+    id={id}
   >
-    {text}
+    <span>
+      {text}
+    </span>
   </button>
 )
 

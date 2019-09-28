@@ -38,8 +38,7 @@ const AddCardSection = () => {
   const addCreditCardSubmit = (e) => {
     e.preventDefault();
     let isFormValid = true;
-    
-    debugger;
+  
     // iterate through each field and validate before 
     Object.keys(formData).forEach(item => {
       const isFieldValid = formValidation(formData[item], item);
@@ -126,6 +125,7 @@ const AddCardSection = () => {
           text={`Add`}
           isDisabled={submitDisabled}
           onClick={addCreditCardSubmit}
+          id={`form-button-submit`}
         />
       </form>
     </section>
