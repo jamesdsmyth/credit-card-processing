@@ -35,9 +35,11 @@ const AddCardSection = () => {
   }
 
   // on clicking 'add' we will submit the form after validating it
-  const addCreditCardSubmit = () => {
+  const addCreditCardSubmit = (e) => {
+    e.preventDefault();
     let isFormValid = true;
     
+    debugger;
     // iterate through each field and validate before 
     Object.keys(formData).forEach(item => {
       const isFieldValid = formValidation(formData[item], item);
@@ -120,7 +122,7 @@ const AddCardSection = () => {
           onBlur={onInputBlur}
         />
         <Button 
-          type={`button`}
+          type={`submit`}
           text={`Add`}
           isDisabled={submitDisabled}
           onClick={addCreditCardSubmit}
