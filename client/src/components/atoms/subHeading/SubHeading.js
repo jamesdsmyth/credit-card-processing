@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SubHeading = ({ text }) => (
-  <h1 className="sub-heading">
+  <h1 className={`sub-heading`}>
     {text}
   </h1>
 )

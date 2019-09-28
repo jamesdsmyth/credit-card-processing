@@ -7,13 +7,14 @@ import TableCell from '../../atoms/tableCell/TableCell';
 // example cardNumber. This matches with the key values that are in the DB.
 // so to display in order, we match it to how it appears in the proeprties file.
 const TableRow = ({ row, headings }) => (
-  <tr className="table-row">
+  <tr className={`table-row`}>
     {
       Object.keys(headings).map((item, index) => {
         return (
           <TableCell 
             key={index}
             data={row[headings[item].ref]}
+            heading={headings[item].ref}
           />
         )
       })

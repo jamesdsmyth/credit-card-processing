@@ -16,6 +16,7 @@ describe('<Button />', () => {
       text={`Add`}
       isDisabled={false}
       onClick={onClick}
+      id={`form-button-submit`}
     />
   );
 

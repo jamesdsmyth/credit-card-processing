@@ -10,10 +10,14 @@ configure({ adapter: new Adapter() });
 describe('<TableCell />', () => {
 
   const container = shallow(
-    <TableCell data={`Thomas`} />
+    <TableCell 
+      data={`Thomas`}
+      heading={`limit`}
+    />
   );
 
   it('should render a <TableCell />', () => {
+    
     // check that the table cell has recieved the correct props
     expect(container.length).toEqual(1);
   });

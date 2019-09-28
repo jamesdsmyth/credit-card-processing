@@ -6,7 +6,7 @@ const Button = ({ type, text, onClick, isDisabled, id }) => (
     type={type}
     onClick={onClick}
     disabled={isDisabled}
-    className="form-button"
+    className={`form-button`}
     id={id}
   >
     <span>
@@ -19,7 +19,8 @@ Button.propTypes = {
   type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool
+  isDisabled: PropTypes.bool,
+  id: PropTypes.string.isRequired
 }
 
 export default Button;

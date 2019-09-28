@@ -25,8 +25,8 @@ const TextInput = ({ type, onBlur, min, max, id, name }) => {
 TextInput.propTypes = {
   type: PropTypes.string.isRequired,
   onBlur: PropTypes.func.isRequired,
-  minLength: PropTypes.number,
-  maxLength: PropTypes.number,
+  min: PropTypes.number,
+  max: PropTypes.number,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 }

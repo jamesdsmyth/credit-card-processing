@@ -7,7 +7,7 @@ import ExistingCardSection from '../../organisms/existingCardsSection/ExistingCa
 import NotificationSection from '../../organisms/notificationSection/NotificationSection';
 
 const LandingPage = () => (
-  <div className="app">
+  <div className={`app`}>
     <HeaderSection />
     <AddCardSection />
     <ExistingCardSection />

@@ -115,7 +115,7 @@ const AddCardSection = () => {
   return (
     <section>
       <SubHeading text={`Add`} />
-      <form className="form">
+      <form className={`form`}>
         <FormFields
           fields={formFields}
           onBlur={onInputBlur}

@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 const Label = ({ text, labelFor }) => (
   <label
     htmlFor={labelFor}
-    className="form-label">
+    className={`form-label`}>
     {text}
   </label>
 )
 
 Label.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  labelFor: PropTypes.string.isRequired
 }
 
 export default Label;
