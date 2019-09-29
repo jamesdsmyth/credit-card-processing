@@ -18,14 +18,8 @@ const FormFields = ({ fields, formData, onChange }) => {
             labelFor={item.id}
           />
           <TextInput
-            type={item.type}
-            validation={item.validation}
+            field={item}
             onChange={onChange}
-            minLength={item.minLength}
-            maxLength={item.maxLength}
-            minValue={item.minValue}
-            id={item.id}
-            name={item.name}
             value={formData[item.name]}
           />
           {

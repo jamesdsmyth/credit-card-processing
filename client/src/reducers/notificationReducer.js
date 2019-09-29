@@ -6,19 +6,19 @@ const notificationReducer = (state = { type: '', message: properties.onLoadMessa
     case 'POST_CREDIT_CARD_SUCCESS':
         return {
           type: 'success',
-          message: `Successfully added a new card for ${action.data.name}.`
+          message: `Successfully added a new credit card for ${action.data.name}.`
         };
 
     case 'POST_CREDIT_CARD_FAILURE':
         return {
           type: 'error',
-          message: `Sorry, there seems to be an issue adding a card for ${action.data.name}.`
+          message: `Sorry, there seems to be an issue adding a credit card for ${action.data.name}.`
         };
 
     case 'GET_CREDIT_CARDS_FAILURE':
       return {
         type: 'error',
-        message: 'Sorry, there seems to be an issue fetching the data at the moment.'
+        message: 'Sorry, there seems to be an issue fetching the credit cards at the moment.'
       };
 
     case 'CLEAR_NOTIFICATIONS':

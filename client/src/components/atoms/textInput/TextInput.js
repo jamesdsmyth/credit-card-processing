@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { onInputChangeValidation } from '../../../helpers/formValidation';
 
-const TextInput = ({ type, validation, minLength, maxLength, minValue, id, name, onChange, value }) => {
+const TextInput = ({ field, onChange, value }) => {
 
   // on input change, we will validate the numbers and letters values.
   // An example is we will not allow numbers in the name, but allow spaces.
@@ -15,29 +15,24 @@ const TextInput = ({ type, validation, minLength, maxLength, minValue, id, name,
 
   return (
     <input
-      type={type}
+      type={field.type}
       className={`form-input`}
-      data-validation={validation}
+      data-validation={field.validation}
+      minLength={field.minLength}
+      maxLength={field.maxLength}
+      data-minvalue={field.minValue}
+      id={field.id}
+      name={field.name}
       onChange={onInputChange}
-      minLength={minLength}
-      maxLength={maxLength}
-      data-minvalue={minValue}
-      id={id}
-      name={name}
       value={value}
     />
   )
 }
 
 TextInput.propTypes = {
-  type: PropTypes.string.isRequired,
-  validation: PropTypes.string.isRequired,
+  field: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  minLength: PropTypes.number,
-  maxLength: PropTypes.number,
-  minValue: PropTypes.number,
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired
+  value: PropTypes.string
 }
 
 export default TextInput;
