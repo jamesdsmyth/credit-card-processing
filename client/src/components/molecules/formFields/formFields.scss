@@ -1,5 +1,9 @@
 .form-row {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+
+  &.invalid {
+    margin-bottom: 9px;
+  }
 }

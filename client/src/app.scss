@@ -9,11 +9,17 @@
 @import './components/atoms/heading/heading.scss';
 @import './components/atoms/subHeading/subHeading.scss';
 @import './components/atoms/label/label.scss';
+@import './components/atoms/button/button.scss';
 @import './components/atoms/textInput/textInput.scss';
+@import './components/atoms/error/error.scss';
+@import './components/atoms/tableHeading/tableHeading.scss';
+@import './components/atoms/tableCell/tableCell.scss';
 
 // molecules
 @import './components/molecules/formFields/formFields.scss';
+@import './components/molecules/table/table.scss';
 
 // organisms
 @import './components/organisms/headerSection/headerSection.scss';
 @import './components/organisms/addCardSection/addCardSection.scss';
+@import './components/organisms/notificationSection/notification.scss';

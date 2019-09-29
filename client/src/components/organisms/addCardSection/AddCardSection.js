@@ -16,8 +16,9 @@ const AddCardSection = () => {
   
   // redux
   const dispatch = useDispatch();
-  const notification = useSelector(state => state.notificationReducer);
-    
+  // const notification = useSelector(state => state.notificationReducer);
+  const cards = useSelector(state => state.creditCardsReducer);
+
   // the local state
   const [formFields, setFormFields] = useState(properties.addCardFormFields);
   const [formData, setFormData] = useState({ name: '', cardNumber: '', limit: '' });
@@ -27,16 +28,20 @@ const AddCardSection = () => {
   // when we recieve a notification (success / failure) for writing to the database,
   // we will then enable the submit button to submit another card
   useEffect(() => {
-    handleNotificationFeedback();
-  }, [notification]);
+    setSubmitDisabled(false);
+  }, [cards]);
 
-  const handleNotificationFeedback = () => {
-    setSubmitDisabled(false)
-  }
+  // const handleNotificationFeedback = () => {
+  //   setSubmitDisabled(false)
+  // }
 
   // on clicking 'add' we will submit the form after validating it
   const addCreditCardSubmit = (e) => {
     e.preventDefault();
+    validateForm();
+  }
+
+  const validateForm = () => {
     let isFormValid = true;
   
     // iterate through each field and validate before 
@@ -47,6 +52,16 @@ const AddCardSection = () => {
       }
       toggleError(item, isFieldValid);
     });
+    
+    // we need to check now if the credit card exists or not in the data base.
+    const isCardNumberUnique = cards.some(item => {
+      return item.cardNumber === formData.cardNumber
+    });
+
+    if(!isCardNumberUnique) {
+      // we need to show an error message
+      // The credit card you are trying to submit is not unique.
+    }
 
     // we need to update the state to re-render the error 
     // messages when the user clicks 'add' on page load.
@@ -59,19 +74,20 @@ const AddCardSection = () => {
       const data = prepareData();
       setSubmitDisabled(true);
       dispatch(postCreditCard(data));
-    } 
+    }
   }
 
   // we need to encrypt the card number and set up the object
   const prepareData = () => {
+    const lowercaseName = formData.name.toLowerCase();
     const encryptedCard = encryptCard(formData.cardNumber);
-    return Object.assign({},  formData, { 
-        'cardNumber': encryptedCard 
-      },
-      {
-        'balance': 100
-      }
-    )
+
+    return {
+      name: lowercaseName,
+      cardNumber: encryptedCard,
+      limit: formData.limit,
+      balance: 100
+    }
   }
 
   // onBlur we validate the form field, if it is empty,
@@ -113,7 +129,7 @@ const AddCardSection = () => {
   }
 
   return (
-    <section>
+    <section className={`page-section`}>
       <SubHeading text={`Add`} />
       <form className={`form`}>
         <FormFields

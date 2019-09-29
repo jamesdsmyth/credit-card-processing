@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 const NotificationSection = () => {
   
   // redux
   const notification = useSelector(state => state.notificationReducer);
-
+  const [visibleClass, setVisibleClass] = useState('visible');
+  
   if(notification.message) {
 
-    setTimeout(() => {
-      console.log('NOW NEED TO CLEAR THE NOTIFICATION');
-    }, 3000);
-    
+    const classNames = `notification ${visibleClass} ${notification.type}`;
+
     return (
-      <section className={`notification ${notification.type}`}>
+      <section className={classNames}>
         {notification.message}
       </section>
     )

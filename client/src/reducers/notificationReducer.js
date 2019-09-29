@@ -1,4 +1,6 @@
-const notificationReducer = (state = { type: 'success', message: ''}, action) => {
+import { properties } from '../assets/properties';
+
+const notificationReducer = (state = { type: 'success', message: properties.onLoadMessage}, action) => {
   switch(action.type) {
 
     case 'POST_CREDIT_CARD_SUCCESS':

@@ -11,7 +11,7 @@ const LandingPage = () => (
     <HeaderSection />
     <AddCardSection />
     <ExistingCardSection />
-    <NotificationSection />
+    {/* <NotificationSection /> */}
   </div>
 )
 

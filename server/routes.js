@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
     } else {
       res.json(cards);
     }
-  });
+  }).sort('name');
 });
 
 router.post('/', (req, res) => {

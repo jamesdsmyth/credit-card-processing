@@ -1,6 +1,8 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
+import { decryptCard } from '../helpers/encryptCard';
+
 import { 
   postCreditCardSuccess, 
   postCreditCardFailure, 
@@ -16,7 +18,7 @@ export function* postCreditCard(obj) {
       yield getCreditCards();
     }
   } catch(error) {
-    yield put(postCreditCardFailure());
+    yield put(postCreditCardFailure(obj.data));
   }
 }
 
@@ -24,8 +26,13 @@ export function* getCreditCards() {
   try {
     const response = yield call(getCreditCardsAPI);
 
+      // we need to decrypt the cards before passing to the reducer
+      const decryptedCards = response.data.map(item => {
+        return Object.assign({}, item, { 'cardNumber': decryptCard(item.cardNumber) })
+      });
+
     if(response.status === 200) {
-      yield put(getCreditCardsSuccess(response.data));
+      yield put(getCreditCardsSuccess(decryptedCards));
     }
   } catch(error) {
     yield put(getCreditCardsFailure());

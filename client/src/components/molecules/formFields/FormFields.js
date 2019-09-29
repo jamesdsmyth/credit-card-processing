@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import TextInput from '../../atoms/textInput/TextInput';
 import Label from '../../atoms/label/Label';
+import Error from '../../atoms/error/Error';
 
 const FormFields = ({ fields, onBlur }) => {
   return (
@@ -18,16 +19,17 @@ const FormFields = ({ fields, onBlur }) => {
           />
           <TextInput
             type={item.type}
+            validation={item.validation}
             onBlur={onBlur}
-            min={item.min}
-            max={item.max}
+            minLength={item.minLength}
+            maxLength={item.maxLength}
+            minValue={item.minValue}
             id={item.id}
             name={item.name}
           />
-          { !item.isValid &&
-            <span>
-              {item.error}
-            </span>
+          {
+            !item.isValid && 
+              <Error text={item.error} />
           }
         </div>
       )

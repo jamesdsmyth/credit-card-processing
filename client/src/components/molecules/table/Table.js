@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import TableHeading from '../../atoms/tableHeading/TableHeading';
 import TableRow from '../tableRow/TableRow';
 
 const Table = ({ headings, data }) => (
-  <table>
+  <table className={`table`}>
     <thead>
       <tr>
         {
           headings.map((item, index) => {
             return (
-              <th key={index}>
-                {item.heading}
-              </th>
+              <TableHeading 
+                heading={item.heading}
+                key={index}
+              />
             )
           })
         }

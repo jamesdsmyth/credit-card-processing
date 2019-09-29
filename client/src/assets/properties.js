@@ -5,30 +5,34 @@ export const properties = {
       label: 'Name',
       type: 'text',
       name: 'name',
-      min: 0,
-      max: 100,
+      validation: 'letters',
+      minLength: 1,
+      maxLength: 100,
       id: 'form-name',
-      error: 'Please enter a valid name using letters',
+      error: 'Please enter a valid name.',
       isValid: true
     },
     {
       label: 'Card number',
       type: 'text',
       name: 'cardNumber',
-      min: 16,
-      max: 19,
+      validation: 'numbers',
+      minLength: 16,
+      maxLength: 19,
       id: 'form-card-number',
-      error: 'Please enter a valid card number using numbers',
+      error: 'Please enter a valid card number.',
       isValid: true
     },
     {
       label: 'Limit',
       type: 'text',
       name: 'limit',
-      min: 0,
-      max: 10,
+      validation: 'numbers',
+      minLength: 1,
+      maxLength: 10,
+      minValue: 1,
       id: 'form-card-limit',
-      error: 'Please enter a valid card limit using numbers',
+      error: 'Please enter a valid card limit.',
       isValid: true
     }
   ],
@@ -49,5 +53,6 @@ export const properties = {
       heading: 'Limit',
       ref: 'limit',
     }
-  ]
+  ],
+  onLoadMessage: 'Fetching the credit cards...'
 }

@@ -31,8 +31,9 @@ export const postCreditCardSuccess = (data) => {
   }
 }
 
-export const postCreditCardFailure = () => {
+export const postCreditCardFailure = (data) => {
   return {
-    type: 'POST_CREDIT_CARD_FAILURE'
+    type: 'POST_CREDIT_CARD_FAILURE',
+    data
   }
 }
