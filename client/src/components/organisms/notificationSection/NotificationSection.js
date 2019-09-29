@@ -5,11 +5,10 @@ const NotificationSection = () => {
   
   // redux
   const notification = useSelector(state => state.notificationReducer);
-  const [visibleClass, setVisibleClass] = useState('visible');
   
   if(notification.message) {
 
-    const classNames = `notification ${visibleClass} ${notification.type}`;
+    const classNames = `notification visible} ${notification.type}`;
 
     return (
       <section className={classNames}>

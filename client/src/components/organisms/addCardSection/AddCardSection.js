@@ -29,11 +29,18 @@ const AddCardSection = () => {
   // we will then enable the submit button to submit another card
   useEffect(() => {
     setSubmitDisabled(false);
-  }, [cards]);
+  }, []);
 
-  // const handleNotificationFeedback = () => {
-  //   setSubmitDisabled(false)
-  // }
+  const onInputChange = (value, name) => {
+    let isValid = formValidation(value, name);
+    
+    if(value.length === 0) {
+      isValid = true;
+    }
+
+    setValue(value, name);
+    toggleError(name, isValid);
+  }
 
   // on clicking 'add' we will submit the form after validating it
   const addCreditCardSubmit = (e) => {
@@ -90,32 +97,9 @@ const AddCardSection = () => {
     }
   }
 
-  // onBlur we validate the form field, if it is empty,
-  // we remove the error. We also call setValue() to
-  // update the state
-  const onInputBlur = (value, name) => {
-    
-    // if there is no change in the input and the user just blurs, then
-    // no need to do any validation
-    if(formData[name] === value) {
-      return;
-    }
-
-    let isValid = formValidation(value, name);
-    
-    if(value.length === 0) {
-      isValid = true;
-    }
-
-    setValue(value, name);
-    toggleError(name, isValid);
-  }
-
   const setValue = (value, name) => {
     const newData = { [name] : value }
-    let newFormData = {...formData, ...newData}
-
-    setFormData(newFormData);
+    setFormData({...formData, ...newData});
   }
 
   const toggleError = (name, isValid) => {
@@ -134,7 +118,9 @@ const AddCardSection = () => {
       <form className={`form`}>
         <FormFields
           fields={formFields}
-          onBlur={onInputBlur}
+          formData={formData}
+          // onBlur={onInputBlur}
+          onChange={onInputChange}
         />
         <Button 
           type={`submit`}

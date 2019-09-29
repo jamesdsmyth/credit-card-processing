@@ -1,4 +1,5 @@
 import { createCipheriv, createDecipheriv, randomBytes} from 'crypto';
+require('dotenv').config();
 const algorithm = 'aes-256-ctr';
 const key = 'b2df428b9929d3ace7c598bbf4e496b2';
 const inputEncoding = 'utf8';

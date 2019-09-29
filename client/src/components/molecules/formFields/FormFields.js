@@ -5,7 +5,7 @@ import TextInput from '../../atoms/textInput/TextInput';
 import Label from '../../atoms/label/Label';
 import Error from '../../atoms/error/Error';
 
-const FormFields = ({ fields, onBlur }) => {
+const FormFields = ({ fields, formData, onChange }) => {
   return (
     fields.map((item, index) => {
       return (
@@ -20,12 +20,13 @@ const FormFields = ({ fields, onBlur }) => {
           <TextInput
             type={item.type}
             validation={item.validation}
-            onBlur={onBlur}
+            onChange={onChange}
             minLength={item.minLength}
             maxLength={item.maxLength}
             minValue={item.minValue}
             id={item.id}
             name={item.name}
+            value={formData[item.name]}
           />
           {
             !item.isValid && 
