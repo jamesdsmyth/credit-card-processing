@@ -37,3 +37,9 @@ export const postCreditCardFailure = (data) => {
     data
   }
 }
+
+export const clearNotifications = () => {
+  return {
+    type: 'CLEAR_NOTIFICATIONS'
+  }
+}

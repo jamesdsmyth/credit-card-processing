@@ -13,4 +13,9 @@
     border-color: $button-primary-hover;
     cursor: pointer;
   }
+
+  &:disabled {
+    background: $button-primary-disabled;
+    border-color: $button-primary-disabled;
+  }
 }

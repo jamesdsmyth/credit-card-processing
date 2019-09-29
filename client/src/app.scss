@@ -14,6 +14,7 @@
 @import './components/atoms/error/error.scss';
 @import './components/atoms/tableHeading/tableHeading.scss';
 @import './components/atoms/tableCell/tableCell.scss';
+@import './components/atoms/message/message.scss';
 
 // molecules
 @import './components/molecules/formFields/formFields.scss';
@@ -22,4 +23,3 @@
 // organisms
 @import './components/organisms/headerSection/headerSection.scss';
 @import './components/organisms/addCardSection/addCardSection.scss';
-@import './components/organisms/notificationSection/notification.scss';

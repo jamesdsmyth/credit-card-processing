@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import SubHeading from '../../atoms/subHeading/SubHeading';
 import Table from '../../molecules/table/Table';
 import { getCreditCards } from '../../../actions/actions';
+import Message from '../../atoms/message/Message';
 
 import { properties } from '../../../assets/properties';
 
@@ -24,7 +25,10 @@ const ExistingCardSection = () => {
       {
         cards.length === 0
         ? 
-          <p>{notification.message}</p>
+        <Message 
+          text={notification.message}
+          type={notification.type}
+        />
         :
           <Table
             headings={properties.existingCardsTableHeadings}

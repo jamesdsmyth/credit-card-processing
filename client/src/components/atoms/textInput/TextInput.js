@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { onInputChangeValidation } from '../../../helpers/formValidation';
 
-
 const TextInput = ({ type, validation, minLength, maxLength, minValue, id, name, onChange, value }) => {
 
   // on input change, we will validate the numbers and letters values.

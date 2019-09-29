@@ -3,7 +3,6 @@ const creditCardsReducer = (state = [], action) => {
     case 'GET_CREDIT_CARDS_SUCCESS':
       return action.data
       
-
     case 'GET_CREDIT_CARDS_FAILURE':
         return state;
 

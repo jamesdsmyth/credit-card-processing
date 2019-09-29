@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import FormFields from '../../molecules/formFields/FormFields';
 import Button from '../../atoms/button/Button';
 import SubHeading from '../../atoms/subHeading/SubHeading';
+import Message from '../../atoms/message/Message';
 
-import { postCreditCard } from '../../../actions/actions';
-
+import { postCreditCard, clearNotifications } from '../../../actions/actions';
 import { properties } from '../../../assets/properties';
 import { formValidation } from '../../../helpers/formValidation';
 import { encryptCard } from '../../../helpers/encryptCard';
@@ -16,8 +16,8 @@ const AddCardSection = () => {
   
   // redux
   const dispatch = useDispatch();
-  // const notification = useSelector(state => state.notificationReducer);
   const cards = useSelector(state => state.creditCardsReducer);
+  let notification = useSelector(state => state.notificationReducer);
 
   // the local state
   const [formFields, setFormFields] = useState(properties.addCardFormFields);
@@ -28,18 +28,13 @@ const AddCardSection = () => {
   // when we recieve a notification (success / failure) for writing to the database,
   // we will then enable the submit button to submit another card
   useEffect(() => {
-    setSubmitDisabled(false);
-  }, []);
+    resetForm();
+  }, [cards]);
 
   const onInputChange = (value, name) => {
-    let isValid = formValidation(value, name);
-    
-    if(value.length === 0) {
-      isValid = true;
-    }
-
     setValue(value, name);
-    toggleError(name, isValid);
+    toggleError(name, true);
+    resetMessage();
   }
 
   // on clicking 'add' we will submit the form after validating it
@@ -51,7 +46,7 @@ const AddCardSection = () => {
   const validateForm = () => {
     let isFormValid = true;
   
-    // iterate through each field and validate before 
+    // iterate through each field and validate before posting
     Object.keys(formData).forEach(item => {
       const isFieldValid = formValidation(formData[item], item);
       if (isFieldValid === false) {
@@ -59,16 +54,6 @@ const AddCardSection = () => {
       }
       toggleError(item, isFieldValid);
     });
-    
-    // we need to check now if the credit card exists or not in the data base.
-    const isCardNumberUnique = cards.some(item => {
-      return item.cardNumber === formData.cardNumber
-    });
-
-    if(!isCardNumberUnique) {
-      // we need to show an error message
-      // The credit card you are trying to submit is not unique.
-    }
 
     // we need to update the state to re-render the error 
     // messages when the user clicks 'add' on page load.
@@ -81,6 +66,20 @@ const AddCardSection = () => {
       const data = prepareData();
       setSubmitDisabled(true);
       dispatch(postCreditCard(data));
+    }
+  }
+
+  // we will clear the form when the credit cards have been updated
+  // meaning a new user has been added
+  const resetForm = () => {
+    setSubmitDisabled(false);
+    setFormData({ name: '', cardNumber: '', limit: '' });
+  }
+
+  // resetting the possible success message of writing to the db
+  const resetMessage = () => {
+    if(notification.type === 'success') {
+        dispatch(clearNotifications());
     }
   }
 
@@ -97,11 +96,13 @@ const AddCardSection = () => {
     }
   }
 
+  // updating the state with the new value of an input field.
   const setValue = (value, name) => {
     const newData = { [name] : value }
     setFormData({...formData, ...newData});
   }
 
+  // show / hide the error relating to that input field.
   const toggleError = (name, isValid) => {
     const index = formFields.findIndex(item => item.name === name);
     const tempFormFields = formFields;
@@ -119,7 +120,6 @@ const AddCardSection = () => {
         <FormFields
           fields={formFields}
           formData={formData}
-          // onBlur={onInputBlur}
           onChange={onInputChange}
         />
         <Button 
@@ -129,6 +129,13 @@ const AddCardSection = () => {
           onClick={addCreditCardSubmit}
           id={`form-button-submit`}
         />
+        {
+          notification.type === 'success' &&
+          <Message 
+            text={notification.message}
+            type={notification.type}
+          />
+        }
       </form>
     </section>
   )
