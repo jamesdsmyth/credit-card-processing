@@ -8,6 +8,7 @@ export const properties = {
       validation: 'letters',
       minLength: 1,
       maxLength: 100,
+      minValue: 0,
       id: 'form-name',
       error: 'Please enter a valid name.',
       isValid: true
@@ -19,6 +20,7 @@ export const properties = {
       validation: 'numbers',
       minLength: 16,
       maxLength: 19,
+      minValue: 0,
       id: 'form-card-number',
       error: 'Please enter a valid card number.',
       isValid: true

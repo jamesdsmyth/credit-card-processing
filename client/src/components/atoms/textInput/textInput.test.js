@@ -12,7 +12,7 @@ configure({ adapter: new Adapter() });
 describe('<TextInput />', () => {
 
   const field = properties.addCardFormFields[0];
-  const onChange = () => {};
+  const onChange = jest.fn();
   const value = 'James';
 
   const container = shallow(
@@ -38,7 +38,18 @@ describe('<TextInput />', () => {
     expect(container.prop('name')).toEqual(field.name);
     expect(container.prop('id')).toEqual(field.id);
     expect(container.prop('name')).toEqual(field.name);
-    expect(container.prop('onChange')).toEqual(expect.any(Function));
+    // expect(container.prop('onChange')).toEqual(onChange);
     expect(container.prop('value')).toEqual(value);
+  });
+
+  it('should call an onChange() event when typed in', () => {
+    const bbb = 'name';
+    const attrs = { dataset: 'name', value: 'james', validation: 'letters' };
+    const data = { target: { getAttribute: name => attrs[name], ...attrs }};
+
+    container.simulate('change', data);
+    
+    // checking to make sure the onChange event was fired
+    expect(onChange).toBeCalled()
   });
 });

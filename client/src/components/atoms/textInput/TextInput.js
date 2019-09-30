@@ -12,8 +12,6 @@ const TextInput = ({ field, onChange, value }) => {
     const updatedValue = onInputChangeValidation(e);
     onChange(updatedValue, e.target.getAttribute('name'));
   }
-
-  console.log('this is the field', field);
   
   return (
     <input
