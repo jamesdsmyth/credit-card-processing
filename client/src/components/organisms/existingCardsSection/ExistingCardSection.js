@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import SubHeading from '../../atoms/subHeading/SubHeading';
 import Table from '../../molecules/table/Table';
-import { getCreditCards } from '../../../actions/actions';
+import { getCreditCardsAction } from '../../../actions/actions';
 import Message from '../../atoms/message/Message';
 
 import { properties } from '../../../assets/properties';
@@ -16,7 +16,7 @@ const ExistingCardSection = () => {
   
   // dispatch an action to get the credit cards in mongoDB.
   useEffect(() => {
-    dispatch(getCreditCards());
+    dispatch(getCreditCardsAction());
   }, [dispatch]);
   return (
     <section className={`page-section`}>

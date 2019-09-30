@@ -30,13 +30,13 @@ describe('<Label />', () => {
   });
 
   it('should render a <Label /> with a class', () => {
-    const headingClass = 'form-label';
+    const labelClass = 'form-label';
 
-    // check that the button has the correct class
-    expect(container.hasClass(headingClass)).toEqual(true);
+    // check that the label has the correct text
+    expect(container.hasClass(labelClass)).toEqual(true);
   });
 
   if('should render a <Label /> with the for prop', () => {
-    expect(container.props('ffddor')).toEqual('cardNumber');
+    expect(container.props('labelFor')).toEqual('cardNumber');
   });
 });

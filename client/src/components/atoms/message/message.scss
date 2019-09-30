@@ -1,15 +1,18 @@
 .message {
+  padding: 12px;
   color: $black;
   display: inline-block;
 
   &.success {
-    padding: 12px;
     background: $message-success;
     color: $white;
   }
 
+  &.warning {
+    background: $message-warning;
+  }
+
   &.error {
-    padding: 12px;
     background: $message-error;
     color: $white;
   }

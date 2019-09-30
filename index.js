@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import routes from './server/routes.js';
 
 const PORT = 3001;
-const BASE_URL = '/api/credit-cards';
+const BASE_URL = '/api/v1/credit-cards';
 const server = express();
 
 server.use(cors());

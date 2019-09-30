@@ -3,35 +3,35 @@ import * as actions from './actions';
 import { mockApiResponseSuccess } from '../mockData/mock-api-success';
 
 describe('actions', () => {
-  it('should create an action for getCreditCards', () => {
+  it('should create an action for getCreditCardsAction', () => {
     
     const type = 'GET_CREDIT_CARDS';
     const expectedAction = {
       type
     }
-    expect(actions.getCreditCards()).toEqual(expectedAction)
+    expect(actions.getCreditCardsAction()).toEqual(expectedAction)
   });
 
-  it('should create an action for getCreditCardsSuccess', () => {
+  it('should create an action for getCreditCardsSuccessAction', () => {
     
     const type = 'GET_CREDIT_CARDS_SUCCESS';
     const expectedAction = {
       type,
       data: mockApiResponseSuccess
     }
-    expect(actions.getCreditCardsSuccess(mockApiResponseSuccess)).toEqual(expectedAction)
+    expect(actions.getCreditCardsSuccessAction(mockApiResponseSuccess)).toEqual(expectedAction)
   });
 
-  it('should create an action for getCreditCardsFailure', () => {
+  it('should create an action for getCreditCardsFailureAction', () => {
     
     const type = 'GET_CREDIT_CARDS_FAILURE';
     const expectedAction = {
       type
     }
-    expect(actions.getCreditCardsFailure()).toEqual(expectedAction)
+    expect(actions.getCreditCardsFailureAction()).toEqual(expectedAction)
   });
 
-  it('should create an action for postCreditCard', () => {
+  it('should create an action for postCreditCardAction', () => {
     
     const type = 'POST_CREDIT_CARD';  
     const data = {
@@ -45,7 +45,7 @@ describe('actions', () => {
       type,
       data
     }
-    expect(actions.postCreditCard(data)).toEqual(expectedAction)
+    expect(actions.postCreditCardAction(data)).toEqual(expectedAction)
   });
 
   it('should create an action for postCreditCard', () => {
@@ -64,24 +64,24 @@ describe('actions', () => {
       type,
       data
     }
-    expect(actions.postCreditCardSuccess(data)).toEqual(expectedAction)
+    expect(actions.postCreditCardSuccessAction(data)).toEqual(expectedAction)
   });
 
-  it('should create an action for postCreditCardFailure', () => {
+  it('should create an action for postCreditCardFailureAction', () => {
     
     const type = 'POST_CREDIT_CARD_FAILURE';
     const expectedAction = {
       type
     }
-    expect(actions.postCreditCardFailure()).toEqual(expectedAction)
+    expect(actions.postCreditCardFailureAction()).toEqual(expectedAction)
   });
 
-  it('should create an action for clearNotifications', () => {
+  it('should create an action for clearNotificationsAction', () => {
     
     const type = 'CLEAR_NOTIFICATIONS';
     const expectedAction = {
       type
     }
-    expect(actions.clearNotifications()).toEqual(expectedAction)
+    expect(actions.clearNotificationsAction()).toEqual(expectedAction)
   });
 })

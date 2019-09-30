@@ -6,7 +6,7 @@ import Button from '../../atoms/button/Button';
 import SubHeading from '../../atoms/subHeading/SubHeading';
 import Message from '../../atoms/message/Message';
 
-import { postCreditCard, clearNotifications } from '../../../actions/actions';
+import { postCreditCardAction, clearNotificationsAction } from '../../../actions/actions';
 import { properties } from '../../../assets/properties';
 import { formValidation } from '../../../helpers/formValidation';
 import { encryptCard } from '../../../helpers/encryptCard';
@@ -65,7 +65,7 @@ const AddCardSection = () => {
     if(isFormValid) {
       const data = prepareData();
       setSubmitDisabled(true);
-      dispatch(postCreditCard(data));
+      dispatch(postCreditCardAction(data));
     }
   }
 
@@ -79,7 +79,7 @@ const AddCardSection = () => {
   // resetting the possible success message of writing to the db
   const resetMessage = () => {
     if(notification.type === 'success') {
-        dispatch(clearNotifications());
+        dispatch(clearNotificationsAction());
     }
   }
 

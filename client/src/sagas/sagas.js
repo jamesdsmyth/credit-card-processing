@@ -4,47 +4,59 @@ import axios from 'axios';
 import { decryptCard } from '../helpers/encryptCard';
 
 import { 
-  postCreditCardSuccess, 
-  postCreditCardFailure, 
-  getCreditCardsSuccess, 
-  getCreditCardsFailure 
+  postCreditCardSuccessAction, 
+  postCreditCardFailureAction, 
+  getCreditCardsSuccessAction,
+  getCreditCardsEmptySuccessAction, 
+  getCreditCardsFailureAction 
 } from '../actions/actions';
 
 export function* postCreditCard(obj) {
   try {
     const response = yield call(postCreditCardAPI, obj.data);
     if(response.status === 200) {
-      yield put(postCreditCardSuccess(response.data));
+      yield put(postCreditCardSuccessAction(response.data));
       yield getCreditCards();
     }
   } catch(error) {
-    yield put(postCreditCardFailure(obj.data));
+    yield put(postCreditCardFailureAction(obj.data));
   }
 }
 
 export function* getCreditCards() {
   try {
     const response = yield call(getCreditCardsAPI);
+    if(response.data.length === 0) {
+      yield put(getCreditCardsEmptySuccessAction());
+    }
 
     // we need to decrypt the cards before passing to the reducer
     const decryptedCards = response.data.map(item => {
       return Object.assign({}, item, { 'cardNumber': decryptCard(item.cardNumber) })
     });
-
-    if(response.status === 200) {
-      yield put(getCreditCardsSuccess(decryptedCards));
-    }
+    yield put(getCreditCardsSuccessAction(decryptedCards));
   } catch(error) {
-    yield put(getCreditCardsFailure());
+    console.log('this ieees the error', error)
+    yield put(getCreditCardsFailureAction());
   }
 }
 
-export const postCreditCardAPI = (data) => {
-  return axios.post('api/credit-cards', data);
+export const getCreditCardsAPI = async () => {
+  try {
+    const response = await axios.get('api/v1/credit-cards');
+    return response;
+  } catch (error) {
+    return error;
+  }
 }
 
-export const getCreditCardsAPI = () => {
-  return axios.get('api/credit-cards');
+export const postCreditCardAPI = async (data) => {
+  try {
+    const response = await axios.post('api/v1/credit-cards', data);
+    return response;
+  } catch (error) {
+    return error;
+  }
 }
 
 export function* watchPostCreditCard(obj) {

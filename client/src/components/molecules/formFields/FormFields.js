@@ -7,11 +7,10 @@ import Error from '../../atoms/error/Error';
 
 const FormFields = ({ fields, formData, onChange }) => {
   return (
-    fields.map((item, index) => {
-      return (
-        <div 
+    fields.map((item, index) => (
+        <div
           className={`form-row ${!item.isValid ? 'invalid' : ''}`}
-          key={index}
+          key={item.id}
         >
           <Label
             text={item.label}
@@ -28,15 +27,14 @@ const FormFields = ({ fields, formData, onChange }) => {
           }
         </div>
       )
-    })
+    )
   )
 }
 
 FormFields.propTypes = {
   fields: PropTypes.array.isRequired,
-  onBlur: PropTypes.func
+  formData: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
 }
-  
-
 
 export default FormFields;

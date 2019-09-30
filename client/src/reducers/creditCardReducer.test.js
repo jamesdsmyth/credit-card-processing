@@ -15,19 +15,19 @@ describe('creditCardReducer reducer', () => {
   });
 
   it('should handle GET_CREDIT_CARDS_SUCCESS', () => {
-    const getCreditCardsSuccess = {
+    const getCreditCardsSuccessAction = {
       type: 'GET_CREDIT_CARDS_SUCCESS',
       data: mockApiResponseSuccess
     }
 
-    expect(creditCardsReducer({}, getCreditCardsSuccess)).toEqual(mockApiResponseSuccess);
+    expect(creditCardsReducer({}, getCreditCardsSuccessAction)).toEqual(mockApiResponseSuccess);
   });
 
   it('should handle GET_CREDIT_CARDS_FAILURE', () => {
-    const getCreditCardsFailure = {
+    const getCreditCardsFailureAction = {
       type: 'GET_CREDIT_CARDS_FAILURE'
     }
 
-    expect(creditCardsReducer([], getCreditCardsFailure)).toEqual([]);
+    expect(creditCardsReducer([], getCreditCardsFailureAction)).toEqual([]);
   });
 });

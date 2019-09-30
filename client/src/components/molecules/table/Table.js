@@ -13,7 +13,7 @@ const Table = ({ headings, data }) => (
             return (
               <TableHeading 
                 heading={item.heading}
-                key={index}
+                key={item.heading}
               />
             )
           })
@@ -27,7 +27,7 @@ const Table = ({ headings, data }) => (
             <TableRow
               row={item}
               headings={headings}
-              key={index}
+              key={item._id}
             />
           )
         })
