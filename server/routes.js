@@ -11,16 +11,18 @@ mongoose.connect(DB_URL, { useNewUrlParser: true }, ).then(
   err => { console.log('I am not connected', err) }
 );
 
+// creating the credit card schema with a unique ID
 const cardSchema = mongoose.Schema({
   _id: mongoose.Types.ObjectId,
   name: String,
-  cardNumber: Object,
+  cardNumber: String,
   balance: Number,
   limit: Number
 });
 
 const cardModel = mongoose.model('CreditCards', cardSchema);
 
+// GET request. Cardmodel is also sorted in Alphabetical order.
 router.get('/', (req, res) => {
   cardModel.find((err, cards) => {
     if(err) {
@@ -31,6 +33,7 @@ router.get('/', (req, res) => {
   }).sort('name');
 });
 
+// POST request. We create a unique ID for the user and merge it in with the payload.
 router.post('/', (req, res) => {
   const id = new mongoose.Types.ObjectId()
   const cardToPersist = Object.assign({ _id: id }, req.body)
@@ -44,6 +47,7 @@ router.post('/', (req, res) => {
   });
 });
 
+// DELETE request. This was used by me to delete card details when developing
 router.delete('/:id', (req, res) => {
   cardModel.findByIdAndRemove(req.params.id, (err, card) => {
     if(err) {
