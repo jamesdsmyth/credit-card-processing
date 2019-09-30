@@ -85,7 +85,7 @@ const AddCardSection = () => {
 
   // we need to encrypt the card number and set up the object
   const prepareData = () => {
-    const lowercaseName = formData.name.toLowerCase();
+    const lowercaseName = formData.name.toLowerCase().trim();
     const encryptedCard = encryptCard(formData.cardNumber);
 
     return {
