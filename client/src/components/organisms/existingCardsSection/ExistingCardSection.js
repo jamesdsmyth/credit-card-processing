@@ -18,7 +18,6 @@ const ExistingCardSection = () => {
   useEffect(() => {
     dispatch(getCreditCards());
   }, [dispatch]);
-
   return (
     <section className={`page-section`}>
       <SubHeading text={`Existing Cards`} />

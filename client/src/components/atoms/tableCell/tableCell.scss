@@ -1,5 +1,9 @@
 .table-cell {
   padding: 15px 0;
   text-align: center;
-  border: 1px solid #616161;
+  border: 1px solid $table-border;
+
+  &.negative-value {
+    color: $form-error;
+  }
 }
