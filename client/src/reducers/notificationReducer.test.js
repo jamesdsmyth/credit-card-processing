@@ -31,7 +31,7 @@ const initialState = {
     expect(notificationReducer({}, postCreditCardSuccessAction)).toEqual(
       { 
         type: 'success',
-        message: `Successfully added a new credit card for ${postCreditCardSuccessAction.data.name}.`
+        message: `${properties.addCreditCardSuccess} ${postCreditCardSuccessAction.data.name}.`
       }
     );
   });
@@ -46,7 +46,7 @@ const initialState = {
     expect(notificationReducer({}, postCreditCardFailureAction)).toEqual(
       { 
         type: 'error',
-        message: `Sorry, there seems to be an issue adding a credit card for ${postCreditCardFailureAction.data.name}.`
+        message: `${properties.addCreditCardFailure} ${postCreditCardFailureAction.data.name}.`
       }
     );
   });
@@ -60,7 +60,7 @@ const initialState = {
     expect(notificationReducer({}, getCreditCardsFailureAction)).toEqual(
       { 
         type: 'error',
-        message: 'Sorry, there seems to be an issue fetching the credit cards at the moment.'
+        message: `${properties.getCreditCardsFailure}.`
       }
     );
   });
@@ -87,8 +87,8 @@ const initialState = {
 
     expect(notificationReducer({}, getCreditCardsEmptySuccessAction)).toEqual(
       { 
-        type: 'success',
-        message: 'We checked, and there are no credit cards saved.'
+        type: 'warning',
+        message: `${properties.getCreditCardsEmptySuccess}.`
       }
     );
   });

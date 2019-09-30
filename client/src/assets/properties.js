@@ -1,3 +1,6 @@
+// [addCardFormFields] - the form input fields array
+// [existingCardsTableHeadings] - the tables headings array
+
 export const properties = {
   landingPageHeading: 'Credit Card System',
   addCardFormFields: [
@@ -56,5 +59,10 @@ export const properties = {
       ref: 'limit',
     }
   ],
-  onLoadMessage: 'Fetching the credit cards...'
+  onLoadMessage: 'Fetching the credit cards...',
+  addCreditCardSuccess: 'Successfully added a new credit card for',
+  getCreditCardsEmptySuccess: 'We checked, and there are no credit cards saved',
+  addCreditCardFailure: 'Sorry, there seems to be an issue adding a credit card for',
+  getCreditCardsFailure: 'Sorry, there seems to be an issue fetching the credit cards at the moment'
+  
 }

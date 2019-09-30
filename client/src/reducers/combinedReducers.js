@@ -18,7 +18,6 @@ const reducer = combineReducers({
 // adding the middleware and the logger to see what the current and next state is in the console
 const store = createStore(reducer,
   applyMiddleware(sagaMiddleware, logger)
-  // applyMiddleware(sagaMiddleware)
 );
 
 // run the root saga

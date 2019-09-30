@@ -11,6 +11,10 @@ import {
   getCreditCardsFailureAction 
 } from '../actions/actions';
 
+// passing the obj which contains the new users data.
+// we POST using axios and this will respond with a 200 if successfull.
+// success - postCreditCardSuccessAction() 
+// failure - postCreditCardFailureAction()
 export function* postCreditCard(obj) {
   try {
     const response = yield call(postCreditCardAPI, obj.data);
@@ -23,6 +27,10 @@ export function* postCreditCard(obj) {
   }
 }
 
+// GET request for populating the table with users data
+// success (empty array) - getCreditCardsEmptySuccessAction() 
+// success - getCreditCardsSuccessAction() 
+// failure - getCreditCardsFailureAction()
 export function* getCreditCards() {
   try {
     const response = yield call(getCreditCardsAPI);
@@ -36,11 +44,11 @@ export function* getCreditCards() {
     });
     yield put(getCreditCardsSuccessAction(decryptedCards));
   } catch(error) {
-    console.log('this ieees the error', error)
     yield put(getCreditCardsFailureAction());
   }
 }
 
+// GET axios request
 export const getCreditCardsAPI = async () => {
   try {
     const response = await axios.get('api/v1/credit-cards');
@@ -50,6 +58,7 @@ export const getCreditCardsAPI = async () => {
   }
 }
 
+// POST axios request passing user data
 export const postCreditCardAPI = async (data) => {
   try {
     const response = await axios.post('api/v1/credit-cards', data);

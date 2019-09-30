@@ -13,7 +13,6 @@ configure({ adapter: new Adapter() });
 describe('AddCardSection />', () => {
   const mockStore = configureStore();
   const store = mockStore({});
-  const addCreditCardSubmit = jest.fn();
 
   const container = mount(
     <Provider store={store}>
@@ -35,13 +34,6 @@ describe('AddCardSection />', () => {
 
     it('should have a submit button', () => {
       expect(container.find('button[type="submit"]').length).toEqual(1);
-    });
-
-    it('should attach an onclick to the button', () => {
-      container.find('button[type="submit"]').simulate('click');
-  
-      // check that the click event was fired
-      expect(addCreditCardSubmit).toHaveBeenCalled();
     });
 });
 

@@ -1,5 +1,5 @@
 .form-input {
-  width: 100%;
+  width: calc(100% - 22px);
   max-width: 500px;
   padding: 8px 10px;
   font-size: $base-font-size;
