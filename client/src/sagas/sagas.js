@@ -26,10 +26,10 @@ export function* getCreditCards() {
   try {
     const response = yield call(getCreditCardsAPI);
 
-      // we need to decrypt the cards before passing to the reducer
-      const decryptedCards = response.data.map(item => {
-        return Object.assign({}, item, { 'cardNumber': decryptCard(item.cardNumber) })
-      });
+    // we need to decrypt the cards before passing to the reducer
+    const decryptedCards = response.data.map(item => {
+      return Object.assign({}, item, { 'cardNumber': decryptCard(item.cardNumber) })
+    });
 
     if(response.status === 200) {
       yield put(getCreditCardsSuccess(decryptedCards));

@@ -17,7 +17,7 @@ const AddCardSection = () => {
   // redux
   const dispatch = useDispatch();
   const cards = useSelector(state => state.creditCardsReducer);
-  let notification = useSelector(state => state.notificationReducer);
+  const notification = useSelector(state => state.notificationReducer);
 
   // the local state
   const [formFields, setFormFields] = useState(properties.addCardFormFields);
@@ -116,7 +116,7 @@ const AddCardSection = () => {
   return (
     <section className={`page-section`}>
       <SubHeading text={`Add`} />
-      <form className={`form`}>
+      <form className={`form ${notification && notification.type}`}>
         <FormFields
           fields={formFields}
           formData={formData}
@@ -130,6 +130,7 @@ const AddCardSection = () => {
           id={`form-button-submit`}
         />
         {
+          notification && 
           notification.type === 'success' &&
           <Message 
             text={notification.message}

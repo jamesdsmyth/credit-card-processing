@@ -6,7 +6,8 @@
   color: $white;
   width: 100px;
   height: 38px;
-  font-size: 16px;
+  font-size: $base-font-size;
+  margin-bottom: 20px;
 
   &:hover {
     background: $button-primary-hover;

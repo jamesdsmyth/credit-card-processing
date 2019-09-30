@@ -13,6 +13,8 @@ const TextInput = ({ field, onChange, value }) => {
     onChange(updatedValue, e.target.getAttribute('name'));
   }
 
+  console.log('this is the field', field);
+  
   return (
     <input
       type={field.type}

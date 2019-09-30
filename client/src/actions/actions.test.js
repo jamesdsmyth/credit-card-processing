@@ -75,4 +75,13 @@ describe('actions', () => {
     }
     expect(actions.postCreditCardFailure()).toEqual(expectedAction)
   });
+
+  it('should create an action for clearNotifications', () => {
+    
+    const type = 'CLEAR_NOTIFICATIONS';
+    const expectedAction = {
+      type
+    }
+    expect(actions.clearNotifications()).toEqual(expectedAction)
+  });
 })

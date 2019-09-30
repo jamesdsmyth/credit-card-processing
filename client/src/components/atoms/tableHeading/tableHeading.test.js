@@ -11,7 +11,7 @@ describe('<TableCell />', () => {
 
   const container = shallow(
     <TableHeading 
-      data={`Balance`}
+      heading={`Balance`}
     />
   );
 

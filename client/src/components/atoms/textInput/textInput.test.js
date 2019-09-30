@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 
+import { properties } from '../../../assets/properties';
+
 import Adapter from 'enzyme-adapter-react-16';
 
 import TextInput from './TextInput';
@@ -9,22 +11,15 @@ configure({ adapter: new Adapter() });
 
 describe('<TextInput />', () => {
 
-  const type = 'text';
-  const min = 16;
-  const max = 19;
-  const id = 'form-card-number';
-  const name = 'cardNumber';
-  let isValid = true;
+  const field = properties.addCardFormFields[0];
+  const onChange = () => {};
+  const value = 'James';
 
   const container = shallow(
     <TextInput
-      type={type}
-      onBlur={() => {}}
-      min={min}
-      max={max}
-      id={id}
-      name={name}
-      isValid={isValid}
+      field={field}
+      onChange={onChange}
+      value={value}
     />
   );
 
@@ -35,13 +30,15 @@ describe('<TextInput />', () => {
 
   it('should pass on the relevant props', () => {
     // Check that the props are passed on correctly
-    expect(container.prop('type')).toEqual(type);
-    expect(container.prop('onBlur')).toEqual(expect.any(Function));
-    expect(container.prop('minLength')).toEqual(min);
-    expect(container.prop('maxLength')).toEqual(max);
-    expect(container.prop('id')).toEqual(id);
-    expect(container.prop('name')).toEqual(name);
+    expect(container.prop('type')).toEqual(field.type);
+    expect(container.prop('data-validation')).toEqual(field.validation);
+    expect(container.prop('minLength')).toEqual(field.minLength);
+    expect(container.prop('maxLength')).toEqual(field.maxLength);
+    expect(container.prop('data-minvalue')).toEqual(field.minValue);
+    expect(container.prop('name')).toEqual(field.name);
+    expect(container.prop('id')).toEqual(field.id);
+    expect(container.prop('name')).toEqual(field.name);
+    expect(container.prop('onChange')).toEqual(expect.any(Function));
+    expect(container.prop('value')).toEqual(value);
   });
-
-
 });

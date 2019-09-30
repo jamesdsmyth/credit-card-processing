@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-bottom: 40px;
+
+  &.success {
+    margin-bottom: 0px;
+  }
 
   @include tablet-portrait {
     width: 500px;

@@ -9,7 +9,7 @@ import { mockApiResponseSuccess } from '../mockData/mock-api-success';
 
 configure({ adapter: new Adapter() });
 
-describe('creditCardReducer actions', () => {
+describe('creditCardReducer reducer', () => {
   it('should return the initial state', () => {
     expect(creditCardsReducer(undefined, [])).toEqual([]);
   });
