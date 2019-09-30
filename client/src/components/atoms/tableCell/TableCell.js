@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// these are the cells in a row in a table
 const TableCell = ({ data, heading }) => {
 
   let cell = data;

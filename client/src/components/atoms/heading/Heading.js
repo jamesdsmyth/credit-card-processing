@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// heading at the top of pages
 const Heading = ({ text }) => (
   <h1 className={`heading`}>
     {text}

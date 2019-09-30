@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// sub heading above content blocks on the page
 const SubHeading = ({ text }) => (
-  <h1 className={`sub-heading`}>
+  <h2 className={`sub-heading`}>
     {text}
-  </h1>
+  </h2>
 )
 
 SubHeading.propTypes = {

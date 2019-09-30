@@ -5,6 +5,7 @@ import TextInput from '../../atoms/textInput/TextInput';
 import Label from '../../atoms/label/Label';
 import Error from '../../atoms/error/Error';
 
+// the form field will contain a label, input and an error message
 const FormFields = ({ fields, formData, onChange }) => {
   return (
     fields.map((item, index) => (

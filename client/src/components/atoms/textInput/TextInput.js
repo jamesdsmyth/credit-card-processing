@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { onInputChangeValidation } from '../../../helpers/formValidation';
 
+// input that will take different attributes depending on type of input
 const TextInput = ({ field, onChange, value }) => {
 
   // on input change, we will validate the numbers and letters values.

@@ -1,0 +1,15 @@
+.table-row {
+  background: $white;
+  
+  &:hover {
+    background: $table-row-background-hover;
+  }
+
+  &:nth-child(even) {
+    background: $table-row-background-even;
+
+    &:hover {
+      background: $table-row-background-hover;
+    }
+  }
+}

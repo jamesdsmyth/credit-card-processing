@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import TableHeading from '../../atoms/tableHeading/TableHeading';
 import TableRow from '../tableRow/TableRow';
 
+// full table used in this case for the credit cards and their owners
 const Table = ({ headings, data }) => (
   <table className={`table`}>
     <thead>

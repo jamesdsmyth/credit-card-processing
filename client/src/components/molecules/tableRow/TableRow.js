@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import TableCell from '../../atoms/tableCell/TableCell';
 
+// table row is a row within a table
 // headings are from the properties file and contains a camelCased 'ref'. 
 // example cardNumber. This matches with the key values that are in the DB.
 // so to display in order, we match it to how it appears in the proeprties file.

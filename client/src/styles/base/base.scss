@@ -25,6 +25,10 @@ html {
 
 .page-section {
   margin-bottom: 25px;
+  
+  &.existing-cards {
+    overflow-x: scroll;
+  }
 
   @include tablet-landscape {
     margin-bottom: 50px;

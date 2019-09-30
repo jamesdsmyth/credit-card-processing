@@ -8,6 +8,7 @@ import Message from '../../atoms/message/Message';
 
 import { properties } from '../../../assets/properties';
 
+// this section contains the tablle and feedbacl depending on the api success
 const ExistingCardSection = () => {
   // redux
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const ExistingCardSection = () => {
     dispatch(getCreditCardsAction());
   }, [dispatch]);
   return (
-    <section className={`page-section`}>
+    <section className={`page-section existing-cards`}>
       <SubHeading text={`Existing Cards`} />
       {
         cards.length === 0

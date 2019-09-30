@@ -1,19 +1,14 @@
 import { takeLatest, put } from 'redux-saga/effects';
 import mockAxios from 'axios';
 
-
 import { mockApiResponseSuccess } from '../mockData/mock-api-success';
 import rootSaga, { 
   watchGetCreditCards, 
   watchPostCreditCard, 
-  getCreditCards, 
   getCreditCardsAPI,
   postCreditCardAPI
 } from './sagas';
 
-import { getCreditCardsAction, postCreditCardAction } from '../actions/actions';
-
-// const mock = new MockAdapter(axios);
 jest.mock('axios');
 
 describe('the sagas used to fetch and post to the MongoDB', () => {

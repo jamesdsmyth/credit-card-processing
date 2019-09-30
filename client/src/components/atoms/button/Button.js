@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// general button
 const Button = ({ type, text, onClick, isDisabled, id }) => (
   <button
     type={type}

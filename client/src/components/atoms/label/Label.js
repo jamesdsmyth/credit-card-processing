@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// label for inputs
 const Label = ({ text, labelFor }) => (
   <label
     htmlFor={labelFor}

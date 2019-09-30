@@ -1,5 +1,6 @@
 import { properties } from '../assets/properties';
 
+// depending on the API response, we will display different types of message.
 const notificationReducer = (state = { type: '', message: properties.onLoadMessage}, action) => {
   switch(action.type) {
 
