@@ -30,3 +30,5 @@ Best practice would be I store the encryption key on the server in a filesystem 
 
 ## If I had more time
 - Offline first approaches are very benifical for users. I would have implemented an IndexedDB which when there is no connection, will allow the user to still render the page and view the stored data.
+- Complete styling for input boxes and formatting of card numbers and currency.
+- Move all encryption / decryption processes to the server folder

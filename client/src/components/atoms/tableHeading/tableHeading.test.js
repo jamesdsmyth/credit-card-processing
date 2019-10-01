@@ -7,7 +7,7 @@ import TableHeading from './TableHeading';
 
 configure({ adapter: new Adapter() });
 
-describe('<TableCell />', () => {
+describe('<TableHeading />', () => {
 
   const container = shallow(
     <TableHeading 
